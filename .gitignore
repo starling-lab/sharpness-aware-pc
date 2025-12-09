@@ -5,10 +5,12 @@ __pycache__/
 
 # C extensions
 *.so
-
+.env
 # Distribution / packaging
 .Python
+debug/
 build/
+docs/
 develop-eggs/
 dist/
 downloads/
@@ -20,6 +22,7 @@ parts/
 sdist/
 var/
 wheels/
+experiments/dev
 share/python-wheels/
 *.egg-info/
 .installed.cfg
@@ -31,7 +34,6 @@ MANIFEST
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
-
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
@@ -43,6 +45,7 @@ htmlcov/
 .coverage
 .coverage.*
 .cache
+.claude/
 nosetests.xml
 coverage.xml
 *.cover
@@ -194,14 +197,76 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
+packages/fix_pfc_imports.py
+packages/fix_pyjuice_packages.py
+
 # Cursor
 #  Cursor is an AI-powered code editor. `.cursorignore` specifies files/directories to
 #  exclude from AI features like autocomplete and code analysis. Recommended for sensitive data
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
+
+# Experiment artefacts and datasets
+data/
+outputs/
+results/
+tables/
+wandb/
+*.pt
 .cursorindexingignore
 
 # Marimo
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.env
+.wandb
+outputs/
+data/
+wandb/
+.pycaches/
+*.log
+*.json
+*.csv
+*.tsv
+*.pickle
+*.hdf5
+*.h5
+*.pt
+*.pth
+*.onnx
+*.zip
+*.tar
+*.tar.gz
+*.tar.bz2
+wandb/
+*.tar.xz
+.pytest_cache/
+results/
+tables/
+figures/
+console/
+figures/
+blog/
+scripts/dev/
+tests/dev/
+hessian_reg/utils/dev/
+hessian_reg/experiments/dev/
+requirements_dev.txt
+*.png
+*.csv
+*.pdf
+*.svg
+*.eps
+*.jpg
+*.jpeg
+*.webp
+*.tex

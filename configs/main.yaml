@@ -1,0 +1,57 @@
+model:
+  backend: pfc
+  # core
+  model_name: EinsumNet          # or TensorCircuit for Pyjuice HCLT
+  graph_type: binary             # "binary" or "pd"
+  use_em: 0                      # 1 => EM, 0 => SGD
+  # structure
+  num_vars: 2
+  num_dims: 1
+  num_input_distributions: 20
+  num_sums: 20
+  num_repetition: 5
+  num_classes: 1
+  depth: -1
+  # Poon–Domingos specific
+  pd_num_pieces: [7, 28]
+  # leaf distribution args
+  leaf_distribution: 'NormalArray'
+  # leaf_config:
+  #   mean: 0.0
+  #   std: 1.0
+  # misc
+  device: cuda
+  graph: None
+  data: None #Needed for HCLT creation in pyjuice
+
+trainer:
+  mode: sgd
+  optimizer_cls: Adam
+  lr: 1e-2
+  mu: 0.0          # μ – regularisation strength (Theorem 2)
+  lambda_: 1.0     # λ – simplex multiplier, usually kept at 1.0
+  save_final: false
+  epochs: 200
+  early_stop: False
+  pseudocount: 0.0
+  early_stop_patience: 10
+  loss_agg: sum  # can also be 'mean'
+
+dataset:
+  name: spiral
+  n_samples: -1
+  batch_size: 20
+  device: cpu
+
+seed: 0
+
+exp:
+  name: ${model.backend}_${dataset.name}_${model.model_name}_${trainer.mode}_R${trainer.mu}
+  base_dir: ${oc.env:RESULTS_DIR,results}
+
+hydra:
+  run:
+    dir: ${exp.base_dir}/${dataset.name}/${model.backend}/${model.model_name}_${trainer.mode}/R${trainer.mu}
+  output_subdir: null
+  job:
+    chdir: True  

@@ -1,0 +1,11 @@
+name: pc-hessian
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      - -r requirements.txt
+      - -r requirements-dev.txt
+# For GPU builds, install PyTorch wheels after creating the env, e.g.:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
