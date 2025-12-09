@@ -261,7 +261,7 @@ tests/dev/
 hessian_reg/utils/dev/
 hessian_reg/experiments/dev/
 requirements_dev.txt
-*.png
+# *.png
 *.csv
 *.pdf
 *.svg
